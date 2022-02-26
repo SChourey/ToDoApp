@@ -1,0 +1,25 @@
+<form class="form" [formGroup]="toDoListForm">
+    <div>
+        <label for="title" class="heading-2">Title<span class="required">*</span></label>
+        <input type="text" formControlName="title" id="title" class="input-2" placeholder="Enter Title" required>
+        <app-todo-validation-error [displayError]="isFieldValid('title')" errorMessage="Please enter title">
+        </app-todo-validation-error>
+    </div>
+    <div>
+        <label for="description" class="heading-2">Description<span class="required">*</span></label>
+        <textarea type="text" formControlName="description" id="description" placeholder="Enter Description"
+            class="input-2" required></textarea>
+        <app-todo-validation-error [displayError]="isFieldValid('description')" errorMessage="Please enter Description">
+        </app-todo-validation-error>
+    </div>
+
+    <div>
+        <label for="date" class="heading-2">Due
+            Date<span class="required">*</span></label>
+        <input type="date" formControlName="date" id="date" placeholder="Enter date" class="input-2" required
+            [min]="getCurrentDate">
+        <app-todo-validation-error [displayError]="isFieldValid('date')" errorMessage="Please enter date">
+        </app-todo-validation-error>
+    </div>
+
+</form>

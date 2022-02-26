@@ -1,0 +1,8 @@
+<span *ngIf="displayError" class="text-red-500 text-sm" role="alert">
+    <p>{{ errorMessage }}</p>
+</span>
+
+<div *ngIf="editValidationError" class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+    <p class="font-bold">Error</p>
+    <p>{{ errorMessage }}</p>
+</div>

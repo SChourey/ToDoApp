@@ -1,0 +1,75 @@
+<!-- View Mode -->
+<app-todo-card *ngIf="type === 'View'">
+
+    <!-- Header Section -->
+    <div header class="title-section">
+        <span class="heading-1">Title:</span>
+        <span class="title">{{ toDoItem.title }}</span>
+        <hr class="w-3/5 mt-1">
+    </div>
+
+    <!-- Content Section -->
+    <div body class="card-content-section">
+        <div class="description-section">
+            <span class="heading-2">Description:</span>
+            <span class="content">{{ toDoItem.description }}</span>
+        </div>
+        <div>
+            <span class="heading-2">Due Date:</span>
+            <span class="content">{{ toDoItem.date | date }}</span>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div footer class="footer-section">
+        <hr class="w/5">
+        <div class="footer">
+            <app-todo-button type="danger" text="Delete" [clickEvent]="dispatchDelete.bind(this, toDoItem)"></app-todo-button>
+            <app-todo-button type="primary" text="Edit" [clickEvent]="startEdit.bind(this, toDoItem)"></app-todo-button>
+        </div>
+    </div>
+</app-todo-card>
+
+<!-- Edit Mode -->
+
+<app-todo-card *ngIf="type === 'Edit'">
+    <!-- Header Section -->
+    <!-- <div header class="title-section-1">
+        <div class="flex items-center mb-4">
+            <label class="heading-3">
+                Title:
+            </label>
+            <input class="input-2" [(ngModel)]="editData.title" id="title" name="title" #title="ngModel" required />
+        </div>
+    </div> -->
+
+    <!-- Content Section -->
+    <!-- <div body class="card-content-section">
+        <div class="flex items-center mb-4">
+            <label class="heading-3">
+                Description:
+            </label>
+            <textarea class="textarea" [(ngModel)]="editData.description" #description="ngModel" required></textarea>
+        </div>
+        <div class="flex items-center">
+            <label class="heading-3">
+                Date:
+            </label>
+            <input type="date" class="input-2" [(ngModel)]="editData.date" #date="ngModel" required>
+        </div>
+    </div> -->
+    <div body>
+        <app-todo-form [todoData]="toDoItem" (formStatus)="onValueChange($event)"></app-todo-form>
+    </div>
+
+    <!-- Footer Section -->
+    <div footer class="footer-section">
+        <hr class="w/5">
+        <div class="footer">
+            <app-todo-button type="danger" text="Cancel" [clickEvent]="stopEdit.bind(this, editData)">
+            </app-todo-button>
+            <app-todo-button type="primary" text="Save" [clickEvent]="updateTodo.bind(this, editData)">
+            </app-todo-button>
+        </div>
+    </div>
+</app-todo-card>

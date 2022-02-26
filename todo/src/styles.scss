@@ -1,0 +1,152 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// generics
+body {
+  @apply font-sans text-slate-700 text-base;
+}
+
+// header-main
+.header-bg {
+  @apply flex-1 flex items-center bg-gradient-to-r from-cyan-700 to-cyan-400 h-20 w-full;
+}
+.heading-main {
+  @apply ml-10 font-medium text-white truncate fixed;
+}
+
+// footer-main
+.footer-bg {
+  @apply flex-1 flex items-center bg-gradient-to-r from-cyan-700 to-cyan-400 h-20 w-full;
+}
+.footer-main {
+  @apply ml-10 font-medium text-white truncate fixed;
+}
+
+// to-do header
+.todo-header-bg {
+  @apply bg-white w-3/4 mx-auto shadow-lg overflow-hidden shadow-gray-400 max-w-7xl py-3 px-3 sm:px-6 lg:px-8;
+}
+
+// Input
+.input-1 {
+  @apply bg-gray-50 border border-gray-300 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white;
+}
+.input-2 {
+  @apply appearance-none w-full border resize-none border-gray-200 rounded py-1 px-2 text-gray-700 text-sm leading-tight focus:outline-none focus:bg-white;
+}
+
+// Textarea
+
+.textarea {
+  @apply appearance-none w-full h-20 border resize-none border-gray-200 rounded py-1 px-2 text-gray-700 text-sm leading-tight focus:outline-none focus:bg-white;
+}
+
+// headings
+.heading-1 {
+  @apply font-bold text-base px-2;
+}
+.heading-2 {
+  @apply font-semibold text-sm pr-3;
+}
+.heading-3 {
+  @apply font-semibold w-3/5 text-sm px-2;
+}
+
+// section
+.title {
+  @apply font-normal text-base;
+}
+.title-section {
+  @apply m-2;
+}
+.title-section-1 {
+  @apply px-4 mt-2;
+}
+.content {
+  @apply font-normal text-sm w-8 h-8 break-words overflow-y-auto;
+}
+.content-section {
+  @apply px-4 m-2 h-auto;
+}
+.footer {
+  @apply flex justify-end;
+}
+.footer-section {
+  @apply px-2 m-2;
+}
+// to-do
+.card {
+  @apply rounded shadow-lg overflow-hidden shadow-slate-400 px-2 py-2 w-60 h-auto mx-auto my-4;
+}
+.card-text {
+  @apply text-slate-600 capitalize;
+}
+.card-content-section {
+  @apply px-2 m-2;
+}
+.description-section {
+  @apply max-h-40 overflow-y-auto mb-2;
+}
+.card-list {
+  @apply py-6 px-3 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-items-center mt-8;
+}
+.primary {
+  @apply bg-blue-600 text-white rounded px-4 py-2 font-sans text-sm m-2;
+}
+.danger {
+  @apply bg-red-500 text-white rounded px-2 py-2 font-sans text-sm m-2;
+}
+.disabled {
+  @apply bg-gray-300 text-gray-700 rounded px-4 py-2 font-sans text-sm m-2;
+}
+.closeModal {
+  @apply p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none;
+}
+.modal {
+  @apply flex items-start justify-between p-5 border-b border-solid border-gray-500 rounded-t;
+}
+.modal-alignment {
+  @apply overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex;
+}
+.modal-content-section {
+  @apply border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none w-auto my-6 mx-auto max-w-6xl px-4;
+}
+.modal-backdrop {
+  @apply opacity-25 fixed inset-0 z-40 bg-black;
+}
+.closeModal-cross {
+  @apply bg-transparent text-black  h-6 w-6 text-2xl block outline-none focus:outline-none;
+}
+.form {
+  @apply px-0 space-y-6 py-2 mt-0;
+}
+.form > :not([hidden]) ~ :not([hidden]) {
+  @apply mt-2 mb-0;
+}
+.required {
+  @apply justify-start text-red-600;
+}
+
+// Tab Css
+
+.tab-content {
+  @apply max-h-0 transition-all overflow-hidden border-l border-blue-400 leading-normal;
+}
+.tab input:checked ~ .tab-content {
+  @apply max-h-60 overflow-auto;
+}
+
+.tab input:checked + label {
+  @apply text-base p-5 border-t border-b border-l-blue-400 border-l;
+}
+
+.tab label::after {
+  @apply float-right right-0 top-0 block w-6 h-6 leading-6 text-base text-center transition-all;
+}
+.tab input[type="checkbox"] + label::after {
+  @apply font-bold border-2 border-r-8 border-gray-500 justify-center flex align-middle flex-wrap-reverse;
+}
+.tab input[type="checkbox"]:checked + label::after {
+  @apply transform bg-blue-500 text-white rotate-45;
+}

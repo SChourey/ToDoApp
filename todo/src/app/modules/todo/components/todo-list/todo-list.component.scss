@@ -1,0 +1,6 @@
+.tab input[type="checkbox"] + label::after {
+  content: "+";
+  border-radius: 50%;
+  @apply font-bold border border-gray-500 justify-center flex align-middle flex-wrap-reverse 
+}
+

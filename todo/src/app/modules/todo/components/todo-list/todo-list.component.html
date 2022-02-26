@@ -1,0 +1,113 @@
+<app-todo-list-header></app-todo-list-header>
+<ng-template #past>
+    <ng-container *ngFor="let todoItem of todoItemsByDate.past" class="px-3 mb-8">
+        <app-todo-item [toDoItem]="todoItem" (triggerDelete)="deleteToDoListItem(todoItem)"></app-todo-item>
+    </ng-container>
+    <p class="text-center px-2 py-2" *ngIf="todoItemsByDate.past.length === 0">No todos due in the past!</p>
+</ng-template>
+
+<ng-template #today>
+    <ng-container *ngFor="let todoItem of todoItemsByDate.today" class="px-3 mb-8">
+        <app-todo-item [toDoItem]="todoItem" (triggerDelete)="deleteToDoListItem(todoItem)"></app-todo-item>
+    </ng-container>
+    <p class="text-center px-2 py-2" *ngIf="todoItemsByDate.today.length === 0">No todos for today!</p>
+</ng-template>
+
+<ng-template #tomorrow>
+    <ng-container *ngFor="let todoItem of todoItemsByDate.tomorrow" class="px-3 mb-8">
+        <app-todo-item [toDoItem]="todoItem" (triggerDelete)="deleteToDoListItem(todoItem)"></app-todo-item>
+    </ng-container>
+    <p class="text-center px-2 py-2" *ngIf="todoItemsByDate.tomorrow.length === 0">No todos for tomorrow!</p>
+</ng-template>
+
+<ng-template #future>
+    <ng-container *ngFor="let todoItem of todoItemsByDate.future" class="px-3 mb-8">
+        <app-todo-item [toDoItem]="todoItem" (triggerDelete)="deleteToDoListItem(todoItem)"></app-todo-item>
+    </ng-container>
+    <p class="text-center px-2 py-2" *ngIf="todoItemsByDate.future.length === 0">No todos for the future!</p>
+</ng-template>
+<div class="flex-row py-10 px-4 lg:flex hidden">
+
+    <!-- To Do List Wrapper -->
+    <div class="border-r-2 border-r-slate-400 border-dotted lg:w-4/5 px-4">
+        <h3 class="heading-2 text-center">Past</h3>
+        <ng-container *ngTemplateOutlet="past">
+        </ng-container>
+    </div>
+    <div class="border-r-2 border-r-slate-400 border-dotted lg:w-4/5 px-4">
+        <h3 class="heading-2 text-center">Today</h3>
+        <ng-container *ngTemplateOutlet="today">
+        </ng-container>
+    </div>
+    <div class="border-r-2 border-r-slate-400 border-dotted lg:w-4/5 px-4">
+        <h3 class="heading-2 text-center">Tomorrow</h3>
+        <ng-container *ngTemplateOutlet="tomorrow">
+        </ng-container>
+    </div>
+    <div class="lg:w-4/5  px-4">
+        <h3 class="heading-2 text-center">Future</h3>
+        <ng-container *ngTemplateOutlet="future">
+        </ng-container>
+    </div>
+
+    <!-- Delete To Do Modal -->
+
+    <app-todo-modal *ngIf="showConfirmationModal">
+        <!-- Header Section -->
+        <div header class="title-section-1">
+            <div class="modal">
+                <h3 class="heading-1">
+                    Warning
+                </h3>
+            </div>
+        </div>
+        <!-- Content Section -->
+        <div body class="content-section">
+            <div class="mt-5">
+                <p>Are you sure you want to delete Todo - {{currentToDoDeleteItem?.title}}?</p>
+            </div>
+        </div>
+        <!-- Footer Section -->
+        <div footer class="footer-section footer">
+            <app-todo-button type="danger" text="Cancel" [clickEvent]="closeModal.bind(this)"></app-todo-button>
+            <app-todo-button type="primary" text="Confirm" [clickEvent]="deleteConfirmTodoItem.bind(this)">
+            </app-todo-button>
+        </div>
+    </app-todo-modal>
+</div>
+<div class="w-5/5 mx-auto p-8 lg:hidden">
+    <div class="shadow-md">
+        <div class="tab w-full overflow-hidden border-t">
+            <input class="absolute opacity-0 " id="tab-multi-one" type="checkbox" name="tabs">
+            <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-one">Past</label>
+            <div class="tab-content">
+                <ng-container *ngTemplateOutlet="past">
+                </ng-container>
+            </div>
+        </div>
+        <div class="tab w-full overflow-hidden border-t">
+            <input class="absolute opacity-0" id="tab-multi-two" type="checkbox" name="tabs">
+            <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-two">Today</label>
+            <div class="tab-content">
+                <ng-container *ngTemplateOutlet="today">
+                </ng-container>
+            </div>
+        </div>
+        <div class="tab w-full overflow-hidden border-t">
+            <input class="absolute opacity-0" id="tab-multi-three" type="checkbox" name="tabs">
+            <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-three">Tomorrow</label>
+            <div class="tab-content">
+                <ng-container *ngTemplateOutlet="tomorrow">
+                </ng-container>
+            </div>
+        </div>
+        <div class="tab w-full overflow-hidden border-t">
+            <input class="absolute opacity-0" id="tab-multi-four" type="checkbox" name="tabs">
+            <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-four">Future</label>
+            <div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+                <ng-container *ngTemplateOutlet="future">
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
