@@ -35,6 +35,15 @@ Run `npm run test` to execute the unit tests via [Jest]
 
 Please run `npm install`
 
-## server
+## Server
 
 To start the backend, run `npm run build` followed by  `npm run start:prod`. The server should start on `http://localhost:3001/`.
+
+## Screenshots
+
+![image info](./screenshots/Desktop_List_View.png) <br/><br/>
+![image info](./screenshots/Add_To_Do.png) <br/><br/>
+![image info](./screenshots/Edit_To_Do.png) <br/><br/>
+![image info](./screenshots/Responsive_List_View.png) <br/><br/>
+![image info](./screenshots/Responsive_Accordian.png) 
+
